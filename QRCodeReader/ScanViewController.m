@@ -28,6 +28,7 @@
 {
     [super viewDidLoad];
     
+    self.backLabel.font        = [UIFont fontWithName:@"OpenSans-CondensedBold" size:12];
     self.validLabel.font        = [UIFont fontWithName:@"OpenSans-ExtraBold" size:36];
     self.invalidLabel.font      = [UIFont fontWithName:@"OpenSans-ExtraBold" size:36];
     self.continueLabel.font     = [UIFont fontWithName:@"OpenSans-CondensedBold" size:22];
@@ -44,6 +45,11 @@
 }
 
 - (IBAction)stopScanning:(id)sender {
+    self.startScanningViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"StartScanningViewController"];
+    [self.navigationController pushViewController:self.startScanningViewController animated:YES];
+}
+
+- (IBAction)back:(id)sender {
     self.startScanningViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"StartScanningViewController"];
     [self.navigationController pushViewController:self.startScanningViewController animated:YES];
 }
