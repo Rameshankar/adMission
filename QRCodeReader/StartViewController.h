@@ -1,5 +1,5 @@
 //
-//  StartScanningViewController.h
+//  StartViewController.h
 //  adMission
 //
 //  Created by Satyen Vats on 06/06/2014.

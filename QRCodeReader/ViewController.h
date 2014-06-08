@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Motifworks. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 
 @interface ViewController : UIViewController <AVCaptureMetadataOutputObjectsDelegate>
