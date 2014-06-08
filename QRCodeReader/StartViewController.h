@@ -1,14 +1,12 @@
 //
 //  StartScanningViewController.h
-//  QRCodeReader
+//  adMission
 //
-//  Created by Sankar on 06/06/14.
-//  Copyright (c) 2014 Appcoda. All rights reserved.
+//  Created by Satyen Vats on 06/06/2014.
+//  Copyright (c) 2014 Motifworks. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
-@interface StartScanningViewController : UIViewController{
+@interface StartViewController : UIViewController{
     
 }
 

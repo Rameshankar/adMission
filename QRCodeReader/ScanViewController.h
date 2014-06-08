@@ -1,18 +1,18 @@
 //
 //  ScanViewController.h
-//  QRCodeReader
+//  adMission
 //
-//  Created by Sankar on 06/06/14.
-//  Copyright (c) 2014 Appcoda. All rights reserved.
+//  Created by Satyen Vats on 06/06/2014.
+//  Copyright (c) 2014 Motifworks. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "StartScanningViewController.h"
+#import "StartViewController.h"
 
 @interface ScanViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIView *validView;
 @property (weak, nonatomic) IBOutlet UIView *invalidView;
+@property (weak, nonatomic) IBOutlet UIView *continueScanningView;
 @property (weak, nonatomic) IBOutlet UIView *stopScanningView;
 
 @property (weak, nonatomic) IBOutlet UILabel *validLabel;
@@ -24,11 +24,11 @@
 @property (weak, nonatomic) IBOutlet UIImageView *photopic;
 @property (weak, nonatomic) IBOutlet UIImageView *photoPicValid;
 
-@property (strong, nonatomic) StartScanningViewController *startScanningViewController;
+@property (strong, nonatomic) StartViewController *startScanningViewController;
 
 
 - (IBAction)back:(id)sender;
-- (IBAction)continue:(id)sender;
+- (IBAction)continueScan:(id)sender;
 - (IBAction)stopScanning:(id)sender;
 
 @end

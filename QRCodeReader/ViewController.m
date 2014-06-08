@@ -1,9 +1,9 @@
 //
 //  ViewController.m
-//  QRCodeReader
+//  adMission
 //
-//  Created by Gabriel Theodoropoulos on 27/11/13.
-//  Copyright (c) 2013 Gabriel Theodoropoulos. All rights reserved.
+//  Created by Satyen Vats on 06/06/2014.
+//  Copyright (c) 2014 Motifworks. All rights reserved.
 //
 
 #import "ViewController.h"

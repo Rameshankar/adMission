@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="J4v-0N-OJb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="J4v-0N-OJb">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -20,10 +20,10 @@
             </objects>
             <point key="canvasLocation" x="-364" y="69"/>
         </scene>
-        <!--Start Scanning View Controller-->
+        <!--Start View Controller-->
         <scene sceneID="4K8-Vv-bdA">
             <objects>
-                <viewController storyboardIdentifier="StartScanningViewController" id="Hhg-mn-VbU" customClass="StartScanningViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StartScanningViewController" id="Hhg-mn-VbU" customClass="StartViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="czS-vm-dZj"/>
                         <viewControllerLayoutGuide type="bottom" id="RIZ-bZ-E12"/>
@@ -153,25 +153,32 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ADD-c4-of0">
-                                <rect key="frame" x="50" y="458" width="220" height="60"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rj2-67-49A">
+                                <rect key="frame" x="50" y="390" width="220" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" backgroundImage="continueBG.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="continue:" destination="P57-yu-LC0" eventType="touchUpInside" id="fTV-gn-pGZ"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CONTINUE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kvh-IG-7ZY">
-                                <rect key="frame" x="50" y="458" width="220" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O8B-mn-G7a">
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ADD-c4-of0">
+                                        <rect key="frame" x="0.0" y="0.0" width="220" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" backgroundImage="continueBG.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="continueScan:" destination="P57-yu-LC0" eventType="touchUpInside" id="K97-aF-tgo"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CONTINUE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kvh-IG-7ZY">
+                                        <rect key="frame" x="0.0" y="0.0" width="220" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O8B-mn-G7a">
                                 <rect key="frame" x="50" y="458" width="220" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -221,6 +228,7 @@
                     <connections>
                         <outlet property="backLabel" destination="Qfl-Bd-zSb" id="LbF-xj-qUm"/>
                         <outlet property="continueLabel" destination="kvh-IG-7ZY" id="PjA-zs-bd7"/>
+                        <outlet property="continueScanningView" destination="rj2-67-49A" id="k6Y-3T-obq"/>
                         <outlet property="invalidLabel" destination="Gg1-G1-Lk8" id="bGn-e1-4km"/>
                         <outlet property="invalidView" destination="a8N-PU-Wwh" id="6up-45-XVk"/>
                         <outlet property="photoPicValid" destination="RjW-2R-BW2" id="3cM-AD-kmN"/>
@@ -298,11 +306,8 @@
     </scenes>
     <resources>
         <image name="continueBG.png" width="412" height="119"/>
-        <image name="continueBG.png" width="412" height="119"/>
-        <image name="continueBG.png" width="412" height="119"/>
         <image name="invalidBG.png" width="436" height="438"/>
         <image name="missionLogo.png" width="426" height="87"/>
-        <image name="missionLogoSmall.png" width="258" height="51"/>
         <image name="missionLogoSmall.png" width="258" height="51"/>
         <image name="startScanning.png" width="411" height="118"/>
         <image name="validBG.png" width="436" height="438"/>

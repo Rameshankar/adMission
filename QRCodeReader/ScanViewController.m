@@ -1,13 +1,13 @@
 //
 //  ScanViewController.m
-//  QRCodeReader
+//  adMission
 //
-//  Created by Sankar on 06/06/14.
-//  Copyright (c) 2014 Appcoda. All rights reserved.
+//  Created by Satyen Vats on 06/06/2014.
+//  Copyright (c) 2014 Motifworks. All rights reserved.
 //
 
 #import "ScanViewController.h"
-#import "StartScanningViewController.h"
+#import "StartViewController.h"
 
 @interface ScanViewController ()
 
@@ -41,7 +41,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)continue:(id)sender {
+- (IBAction)continueScan:(id)sender {
 }
 
 - (IBAction)stopScanning:(id)sender {

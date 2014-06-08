@@ -16,7 +16,7 @@
 		018AA5E61941A2E200FAC8CA /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 018AA5E51941A2E200FAC8CA /* OpenSans-ExtraBold.ttf */; };
 		018AA5E91941A38500FAC8CA /* OpenSans-CondLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 018AA5E71941A38500FAC8CA /* OpenSans-CondLight.ttf */; };
 		018AA5EA1941A38500FAC8CA /* OpenSans-CondBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 018AA5E81941A38500FAC8CA /* OpenSans-CondBold.ttf */; };
-		018AA5EE1941A6BC00FAC8CA /* StartScanningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AA5ED1941A6BC00FAC8CA /* StartScanningViewController.m */; };
+		018AA5EE1941A6BC00FAC8CA /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AA5ED1941A6BC00FAC8CA /* StartViewController.m */; };
 		018AA5F11941BEF200FAC8CA /* ScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AA5F01941BEF200FAC8CA /* ScanViewController.m */; };
 		C0F2127F1845D0BB005DC125 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0F2127E1845D0BB005DC125 /* Foundation.framework */; };
 		C0F212811845D0BB005DC125 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0F212801845D0BB005DC125 /* CoreGraphics.framework */; };
@@ -56,8 +56,8 @@
 		018AA5E51941A2E200FAC8CA /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
 		018AA5E71941A38500FAC8CA /* OpenSans-CondLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-CondLight.ttf"; sourceTree = "<group>"; };
 		018AA5E81941A38500FAC8CA /* OpenSans-CondBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-CondBold.ttf"; sourceTree = "<group>"; };
-		018AA5EC1941A6BC00FAC8CA /* StartScanningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartScanningViewController.h; sourceTree = "<group>"; };
-		018AA5ED1941A6BC00FAC8CA /* StartScanningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartScanningViewController.m; sourceTree = "<group>"; };
+		018AA5EC1941A6BC00FAC8CA /* StartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartViewController.h; sourceTree = "<group>"; };
+		018AA5ED1941A6BC00FAC8CA /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
 		018AA5EF1941BEF200FAC8CA /* ScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanViewController.h; sourceTree = "<group>"; };
 		018AA5F01941BEF200FAC8CA /* ScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanViewController.m; sourceTree = "<group>"; };
 		C0F2127B1845D0BB005DC125 /* adMission.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = adMission.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -180,8 +180,8 @@
 				C0F212931845D0BB005DC125 /* Main_iPad.storyboard */,
 				C0F212961845D0BB005DC125 /* ViewController.h */,
 				C0F212971845D0BB005DC125 /* ViewController.m */,
-				018AA5EC1941A6BC00FAC8CA /* StartScanningViewController.h */,
-				018AA5ED1941A6BC00FAC8CA /* StartScanningViewController.m */,
+				018AA5EC1941A6BC00FAC8CA /* StartViewController.h */,
+				018AA5ED1941A6BC00FAC8CA /* StartViewController.m */,
 				018AA5EF1941BEF200FAC8CA /* ScanViewController.h */,
 				018AA5F01941BEF200FAC8CA /* ScanViewController.m */,
 				C0F212991845D0BB005DC125 /* Images.xcassets */,
@@ -332,7 +332,7 @@
 				C0F212981845D0BB005DC125 /* ViewController.m in Sources */,
 				018AA5F11941BEF200FAC8CA /* ScanViewController.m in Sources */,
 				C0F2128F1845D0BB005DC125 /* AppDelegate.m in Sources */,
-				018AA5EE1941A6BC00FAC8CA /* StartScanningViewController.m in Sources */,
+				018AA5EE1941A6BC00FAC8CA /* StartViewController.m in Sources */,
 				C0F2128B1845D0BB005DC125 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
