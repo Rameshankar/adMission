@@ -153,6 +153,11 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FIf-ci-Ly3">
+                                <rect key="frame" x="50" y="116" width="220" height="240"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rj2-67-49A">
                                 <rect key="frame" x="50" y="390" width="220" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -203,30 +208,11 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gmK-IM-7Ts">
-                                <rect key="frame" x="20" y="30" width="50" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" backgroundImage="continueBG.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="back:" destination="P57-yu-LC0" eventType="touchUpInside" id="J6r-se-qnF"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Back" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qfl-Bd-zSb">
-                                <rect key="frame" x="20" y="30" width="50" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="LPU-cu-5gh"/>
                     <connections>
-                        <outlet property="backLabel" destination="Qfl-Bd-zSb" id="LbF-xj-qUm"/>
                         <outlet property="continueLabel" destination="kvh-IG-7ZY" id="PjA-zs-bd7"/>
                         <outlet property="continueScanningView" destination="rj2-67-49A" id="k6Y-3T-obq"/>
                         <outlet property="invalidLabel" destination="Gg1-G1-Lk8" id="bGn-e1-4km"/>
@@ -237,6 +223,7 @@
                         <outlet property="stopScanningView" destination="O8B-mn-G7a" id="njU-kp-ajb"/>
                         <outlet property="validLabel" destination="kdz-nL-tOH" id="5Xe-c4-xvw"/>
                         <outlet property="validView" destination="J3g-F9-FYK" id="Rea-Ak-SLJ"/>
+                        <outlet property="viewPreview" destination="FIf-ci-Ly3" id="jp2-st-Zsn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wg1-YL-AsR" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -18,6 +18,7 @@
 		018AA5EA1941A38500FAC8CA /* OpenSans-CondBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 018AA5E81941A38500FAC8CA /* OpenSans-CondBold.ttf */; };
 		018AA5EE1941A6BC00FAC8CA /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AA5ED1941A6BC00FAC8CA /* StartViewController.m */; };
 		018AA5F11941BEF200FAC8CA /* ScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AA5F01941BEF200FAC8CA /* ScanViewController.m */; };
+		1CE694751944014E0094DE76 /* adMissionSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE694741944014E0094DE76 /* adMissionSettings.m */; };
 		C0F2127F1845D0BB005DC125 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0F2127E1845D0BB005DC125 /* Foundation.framework */; };
 		C0F212811845D0BB005DC125 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0F212801845D0BB005DC125 /* CoreGraphics.framework */; };
 		C0F212831845D0BB005DC125 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0F212821845D0BB005DC125 /* UIKit.framework */; };
@@ -60,6 +61,8 @@
 		018AA5ED1941A6BC00FAC8CA /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
 		018AA5EF1941BEF200FAC8CA /* ScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanViewController.h; sourceTree = "<group>"; };
 		018AA5F01941BEF200FAC8CA /* ScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanViewController.m; sourceTree = "<group>"; };
+		1CE694731944014E0094DE76 /* adMissionSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = adMissionSettings.h; sourceTree = "<group>"; };
+		1CE694741944014E0094DE76 /* adMissionSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = adMissionSettings.m; sourceTree = "<group>"; };
 		C0F2127B1845D0BB005DC125 /* adMission.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = adMission.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0F2127E1845D0BB005DC125 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C0F212801845D0BB005DC125 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -184,8 +187,10 @@
 				018AA5ED1941A6BC00FAC8CA /* StartViewController.m */,
 				018AA5EF1941BEF200FAC8CA /* ScanViewController.h */,
 				018AA5F01941BEF200FAC8CA /* ScanViewController.m */,
-				C0F212991845D0BB005DC125 /* Images.xcassets */,
 				C0F212B618465CCB005DC125 /* beep.mp3 */,
+				1CE694731944014E0094DE76 /* adMissionSettings.h */,
+				1CE694741944014E0094DE76 /* adMissionSettings.m */,
+				C0F212991845D0BB005DC125 /* Images.xcassets */,
 				C0F212851845D0BB005DC125 /* Supporting Files */,
 			);
 			name = adMission;
@@ -333,6 +338,7 @@
 				018AA5F11941BEF200FAC8CA /* ScanViewController.m in Sources */,
 				C0F2128F1845D0BB005DC125 /* AppDelegate.m in Sources */,
 				018AA5EE1941A6BC00FAC8CA /* StartViewController.m in Sources */,
+				1CE694751944014E0094DE76 /* adMissionSettings.m in Sources */,
 				C0F2128B1845D0BB005DC125 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

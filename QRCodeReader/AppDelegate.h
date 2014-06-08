@@ -6,10 +6,13 @@
 //  Copyright (c) 2014 Motifworks. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "adMissionSettings.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) adMissionSettings *settings;
+
++ (adMissionSettings *)settings;
 
 @end
