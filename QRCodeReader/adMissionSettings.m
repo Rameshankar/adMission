@@ -19,8 +19,8 @@
         if (savedUserData != nil) {
             self = [NSKeyedUnarchiver unarchiveObjectWithData:savedUserData];
         } else {
-            self.scanMode = FALSE;
-            self.soundMode = FALSE;
+            self.scanMode = TRUE;
+            self.soundMode = TRUE;
         }
     }
     return self;

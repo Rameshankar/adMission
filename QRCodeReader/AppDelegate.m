@@ -13,6 +13,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    self.settings = [[adMissionSettings alloc] init];
     return YES;
 }
 							
@@ -32,7 +33,9 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-    self.settings = [[adMissionSettings alloc] init];
+    if (!self.settings) {
+        self.settings = [[adMissionSettings alloc] init];
+    }
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -46,9 +49,14 @@
     [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:self.settings] forKey:@"admissionsettings"];
 }
 
++ (AppDelegate *)delegate
+{
+    return (AppDelegate *)[[UIApplication sharedApplication] delegate];
+}
+
 + (adMissionSettings *)settings
 {
-    return [(AppDelegate *)[[UIApplication sharedApplication] delegate] settings];
+    return [[AppDelegate delegate] settings];
 }
 
 @end

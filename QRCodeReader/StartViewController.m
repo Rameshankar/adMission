@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Motifworks. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "StartViewController.h"
 
 @interface StartViewController ()
@@ -31,6 +32,8 @@
     self.startScanningLabel.font      = [UIFont fontWithName:@"OpenSans-CondensedBold" size:21];
     self.continuousScanningLabel.font = [UIFont fontWithName:@"OpenSans-CondensedLight" size:18];
     
+    self.continuousScanningSwitch.on = [[AppDelegate settings] scanMode];
+    self.soundSwitch.on = [[AppDelegate settings] soundMode];
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,10 +47,12 @@
 }
 
 - (IBAction)continuousScanning:(id)sender {
-     NSLog(@"continuousScanning");
+    [[AppDelegate settings] setScanMode:self.continuousScanningSwitch.on];
+    NSLog(@"scan mode - %d", [[AppDelegate settings] scanMode]);
 }
 
 - (IBAction)sound:(id)sender {
-     NSLog(@"soundScanning");
+    [[AppDelegate settings] setSoundMode:self.soundSwitch.on];
+    NSLog(@"sound mode - %d", [[AppDelegate settings] soundMode]);
 }
 @end

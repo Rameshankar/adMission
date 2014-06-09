@@ -22,7 +22,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *invalidLabel;
 @property (weak, nonatomic) IBOutlet UILabel *continueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *stopScanningLabel;
-//@property (weak, nonatomic) IBOutlet UILabel *backLabel;
+@property (weak, nonatomic) IBOutlet UILabel *validValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *invalidValueLabel;
 
 @property (weak, nonatomic) IBOutlet UIImageView *photopic;
 @property (weak, nonatomic) IBOutlet UIImageView *photoPicValid;

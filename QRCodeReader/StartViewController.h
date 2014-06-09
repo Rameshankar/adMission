@@ -14,6 +14,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *startScanningLabel;
 @property (weak, nonatomic) IBOutlet UILabel *continuousScanningLabel;
 
+@property (weak, nonatomic) IBOutlet UISwitch *continuousScanningSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *soundSwitch;
+
 - (IBAction)sound:(id)sender;
 - (IBAction)startScanning:(id)sender;
 - (IBAction)continuousScanning:(id)sender;

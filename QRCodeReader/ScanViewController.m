@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Motifworks. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "ScanViewController.h"
 #import "StartViewController.h"
 
@@ -50,6 +51,11 @@
     
     // Begin loading the sound effect so to have it ready for playback when it's needed.
     [self loadBeepSound];
+    
+    if ([[AppDelegate settings] scanMode]) {
+        self.continueScanningView.hidden = TRUE;
+        [self continueScan:nil];
+    }
 
 }
 
@@ -69,6 +75,9 @@
             // running, then change the start button title and the status message.
 //            [_bbitemStart setTitle:@"Stop"];
 //            [_lblStatus setText:@"Scanning for QR Code..."];
+            self.validView.hidden = TRUE;
+            self.invalidView.hidden = TRUE;
+            self.viewPreview.hidden = FALSE;
         }
     }
     else{
@@ -121,9 +130,9 @@
     [_captureSession addOutput:captureMetadataOutput];
     
     // Create a new serial dispatch queue.
-    dispatch_queue_t dispatchQueue;
-    dispatchQueue = dispatch_queue_create("myQueue", NULL);
-    [captureMetadataOutput setMetadataObjectsDelegate:self queue:dispatchQueue];
+//    dispatch_queue_t dispatchQueue;
+//    dispatchQueue = dispatch_queue_create("myQueue", NULL);
+    [captureMetadataOutput setMetadataObjectsDelegate:self queue:dispatch_get_main_queue()];
     [captureMetadataOutput setMetadataObjectTypes:[NSArray arrayWithObject:AVMetadataObjectTypeQRCode]];
     
     // Initialize the video preview layer and add it as a sublayer to the viewPreview view's layer.
@@ -183,17 +192,32 @@
             // If the found metadata is equal to the QR code metadata then update the status label's text,
             // stop reading and change the bar button item's title and the flag's value.
             // Everything is done on the main thread.
-//            [_lblStatus performSelectorOnMainThread:@selector(setText:) withObject:[metadataObj stringValue] waitUntilDone:NO];
-            
-            [self performSelectorOnMainThread:@selector(stopReading) withObject:nil waitUntilDone:NO];
-//            [_bbitemStart performSelectorOnMainThread:@selector(setTitle:) withObject:@"Start!" waitUntilDone:NO];
-            
-            _isReading = NO;
+            NSLog(@"Value - %@", [metadataObj stringValue]);
+            if ([[metadataObj stringValue] length] == 8) {
+                self.viewPreview.hidden = TRUE;
+                self.validView.hidden = FALSE;
+                self.validValueLabel.text = [metadataObj stringValue];
+                [self performSelectorOnMainThread:@selector(stopReading) withObject:nil waitUntilDone:NO];
+                _isReading = NO;
+            } else {
+                self.viewPreview.hidden = TRUE;
+                self.invalidView.hidden = FALSE;
+                [self performSelectorOnMainThread:@selector(stopReading) withObject:nil waitUntilDone:NO];
+                _isReading = NO;
+                self.invalidValueLabel.text = [metadataObj stringValue];
+            }
+            if ([[AppDelegate settings] scanMode]) {
+                [self performSelector:@selector(continueScan:) withObject:Nil afterDelay:2.0f];
+            }
             
             // If the audio player is not nil, then play the sound effect.
-            if (_audioPlayer) {
+            if (_audioPlayer && ([[AppDelegate settings] soundMode])) {
                 [_audioPlayer play];
             }
+        } else {
+            self.viewPreview.hidden = TRUE;
+            self.invalidView.hidden = FALSE;
+            [self performSelectorOnMainThread:@selector(stopReading) withObject:nil waitUntilDone:NO];
         }
     }
     
