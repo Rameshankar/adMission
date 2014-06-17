@@ -52,6 +52,7 @@
     // Begin loading the sound effect so to have it ready for playback when it's needed.
     [self loadBeepSound];
     
+    
     if ([[AppDelegate settings] scanMode]) {
         self.continueScanningView.hidden = TRUE;
         [self continueScan:nil];
@@ -78,6 +79,9 @@
             self.validView.hidden = TRUE;
             self.invalidView.hidden = TRUE;
             self.viewPreview.hidden = FALSE;
+            if ([[AppDelegate settings] scanMode]) {
+                self.continueScanningView.hidden = TRUE;
+            }
         }
     }
     else{
@@ -159,6 +163,18 @@
 }
 
 
+-(void)stopReadingInContinuousMode{
+    // Stop video capture and make the capture session object nil.
+    [_captureSession stopRunning];
+    _captureSession = nil;
+    
+    // Remove the video preview layer from the viewPreview view's layer.
+    [_videoPreviewLayer removeFromSuperlayer];
+    if ([[AppDelegate settings] scanMode]) {
+        [self performSelector:@selector(continueScan:) withObject:Nil afterDelay:2.0f];
+    }
+}
+
 -(void)loadBeepSound{
     // Get the path to the beep.mp3 file and convert it to a NSURL object.
     NSString *beepFilePath = [[NSBundle mainBundle] pathForResource:@"beep" ofType:@"mp3"];
@@ -196,18 +212,17 @@
             if ([[metadataObj stringValue] length] == 8) {
                 self.viewPreview.hidden = TRUE;
                 self.validView.hidden = FALSE;
-                self.validValueLabel.text = [metadataObj stringValue];
-                [self performSelectorOnMainThread:@selector(stopReading) withObject:nil waitUntilDone:NO];
+                [self performSelectorOnMainThread:@selector(stopReadingInContinuousMode) withObject:nil waitUntilDone:NO];
                 _isReading = NO;
+                self.validValueLabel.text = [metadataObj stringValue];
+                [_captureSession stopRunning];
             } else {
                 self.viewPreview.hidden = TRUE;
                 self.invalidView.hidden = FALSE;
                 [self performSelectorOnMainThread:@selector(stopReading) withObject:nil waitUntilDone:NO];
                 _isReading = NO;
                 self.invalidValueLabel.text = [metadataObj stringValue];
-            }
-            if ([[AppDelegate settings] scanMode]) {
-                [self performSelector:@selector(continueScan:) withObject:Nil afterDelay:2.0f];
+                self.continueScanningView.hidden = FALSE;
             }
             
             // If the audio player is not nil, then play the sound effect.
