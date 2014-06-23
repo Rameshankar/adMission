@@ -12,5 +12,11 @@
 
 @property BOOL scanMode;
 @property BOOL soundMode;
+@property BOOL pauseMode;
+@property NSMutableArray *validScanList;
+@property NSMutableArray *invalidScanList;
+
+- (BOOL)addToValidScan:(NSString *)scanedValue;
+- (BOOL)addToInvalidScan:(NSString *)scanedValue;
 
 @end

@@ -24,6 +24,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *stopScanningLabel;
 @property (weak, nonatomic) IBOutlet UILabel *validValueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *invalidValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *pauseScanningLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *validCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *invalidCountLabel;
 
 @property (weak, nonatomic) IBOutlet UIImageView *photopic;
 @property (weak, nonatomic) IBOutlet UIImageView *photoPicValid;
@@ -34,5 +38,6 @@
 //- (IBAction)back:(id)sender;
 - (IBAction)continueScan:(id)sender;
 - (IBAction)stopScanning:(id)sender;
+- (IBAction)pauseScanning:(id)sender;
 
 @end

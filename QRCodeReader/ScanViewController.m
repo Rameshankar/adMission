@@ -19,7 +19,7 @@
 
 -(BOOL)startReading;
 -(void)stopReading;
--(void)loadBeepSound;
+-(void)loadBeepSoundFor:(BOOL)isSuccess;
 
 @end
 
@@ -41,7 +41,8 @@
     self.validLabel.font        = [UIFont fontWithName:@"OpenSans-ExtraBold" size:36];
     self.invalidLabel.font      = [UIFont fontWithName:@"OpenSans-ExtraBold" size:36];
     self.continueLabel.font     = [UIFont fontWithName:@"OpenSans-CondensedBold" size:22];
-    self.stopScanningLabel.font = [UIFont fontWithName:@"OpenSans-CondensedBold" size:22];
+    self.stopScanningLabel.font = [UIFont fontWithName:@"OpenSans-CondensedBold" size:16];
+    self.pauseScanningLabel.font = [UIFont fontWithName:@"OpenSans-CondensedBold" size:16];
     
     // Initially make the captureSession object nil.
     _captureSession = nil;
@@ -50,8 +51,13 @@
     _isReading = NO;
     
     // Begin loading the sound effect so to have it ready for playback when it's needed.
-    [self loadBeepSound];
+    [self loadBeepSoundFor:TRUE];
     
+    NSNumber *validCount = [NSNumber numberWithInteger:[[[AppDelegate settings] validScanList] count]];
+    self.validCountLabel.text = [validCount stringValue];
+    NSNumber *invalidCount = [NSNumber numberWithInteger:[[[AppDelegate settings] invalidScanList] count]];
+    self.invalidCountLabel.text = [invalidCount stringValue];
+
     
     if ([[AppDelegate settings] scanMode]) {
         self.continueScanningView.hidden = TRUE;
@@ -96,6 +102,13 @@
 }
 
 - (IBAction)stopScanning:(id)sender {
+    [[[AppDelegate settings] validScanList] removeAllObjects];
+    [[[AppDelegate settings] invalidScanList] removeAllObjects];
+    self.startScanningViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"StartScanningViewController"];
+    [self.navigationController pushViewController:self.startScanningViewController animated:YES];
+}
+
+- (IBAction)pauseScanning:(id)sender {
     self.startScanningViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"StartScanningViewController"];
     [self.navigationController pushViewController:self.startScanningViewController animated:YES];
 }
@@ -171,13 +184,20 @@
     // Remove the video preview layer from the viewPreview view's layer.
     [_videoPreviewLayer removeFromSuperlayer];
     if ([[AppDelegate settings] scanMode]) {
-        [self performSelector:@selector(continueScan:) withObject:Nil afterDelay:2.0f];
+        [self performSelector:@selector(continueScan:) withObject:Nil afterDelay:1.0f];
     }
 }
 
--(void)loadBeepSound{
+-(void)loadBeepSoundFor:(BOOL)isSuccess;
+{
     // Get the path to the beep.mp3 file and convert it to a NSURL object.
-    NSString *beepFilePath = [[NSBundle mainBundle] pathForResource:@"beep" ofType:@"mp3"];
+    NSString *soundFile;
+    if (isSuccess) {
+        soundFile = @"beep";
+    } else {
+        soundFile = @"invalid_beep";
+    }
+    NSString *beepFilePath = [[NSBundle mainBundle] pathForResource:soundFile ofType:@"mp3"];
     NSURL *beepURL = [NSURL URLWithString:beepFilePath];
     
     NSError *error;
@@ -210,24 +230,54 @@
             // Everything is done on the main thread.
             NSLog(@"Value - %@", [metadataObj stringValue]);
             if ([[metadataObj stringValue] length] == 8) {
-                self.viewPreview.hidden = TRUE;
-                self.validView.hidden = FALSE;
-                [self performSelectorOnMainThread:@selector(stopReadingInContinuousMode) withObject:nil waitUntilDone:NO];
-                _isReading = NO;
-                self.validValueLabel.text = [metadataObj stringValue];
-                [_captureSession stopRunning];
+                if ([[AppDelegate settings] addToValidScan:[metadataObj stringValue]]) {
+                    self.viewPreview.hidden = TRUE;
+                    self.validView.hidden = FALSE;
+                    [self performSelectorOnMainThread:@selector(stopReadingInContinuousMode) withObject:nil waitUntilDone:NO];
+                    _isReading = NO;
+                    self.validValueLabel.text = [metadataObj stringValue];
+                    NSNumber *validCount = [NSNumber numberWithInteger:[[[AppDelegate settings] validScanList] count]];
+                    self.validCountLabel.text = [validCount stringValue];
+                    [_captureSession stopRunning];
+                    // If the audio player is not nil, then play the sound effect.
+                    [self loadBeepSoundFor:TRUE];
+                    if (_audioPlayer && ([[AppDelegate settings] soundMode])) {
+                        [_audioPlayer play];
+                    }
+                } else {
+                    self.viewPreview.hidden = TRUE;
+                    self.invalidView.hidden = FALSE;
+                    [self performSelectorOnMainThread:@selector(stopReading) withObject:nil waitUntilDone:NO];
+                    _isReading = NO;
+                    self.invalidLabel.text = @"DUPLICATE";
+                    self.invalidValueLabel.text = [metadataObj stringValue];
+                    self.continueScanningView.hidden = FALSE;
+                    NSNumber *invalidCount = [NSNumber numberWithInteger:[[[AppDelegate settings] invalidScanList] count]];
+                    self.invalidCountLabel.text = [invalidCount stringValue];
+                    [_captureSession stopRunning];
+                    // If the audio player is not nil, then play the sound effect.
+                    [self loadBeepSoundFor:FALSE];
+                    if (_audioPlayer && ([[AppDelegate settings] soundMode])) {
+                        [_audioPlayer play];
+                    }
+                }
             } else {
+                [[AppDelegate settings] addToInvalidScan:[metadataObj stringValue]];
                 self.viewPreview.hidden = TRUE;
                 self.invalidView.hidden = FALSE;
                 [self performSelectorOnMainThread:@selector(stopReading) withObject:nil waitUntilDone:NO];
                 _isReading = NO;
+                self.invalidLabel.text = @"INVALID";
                 self.invalidValueLabel.text = [metadataObj stringValue];
                 self.continueScanningView.hidden = FALSE;
-            }
-            
-            // If the audio player is not nil, then play the sound effect.
-            if (_audioPlayer && ([[AppDelegate settings] soundMode])) {
-                [_audioPlayer play];
+                NSNumber *invalidCount = [NSNumber numberWithInteger:[[[AppDelegate settings] invalidScanList] count]];
+                self.invalidCountLabel.text = [invalidCount stringValue];
+                [_captureSession stopRunning];
+                // If the audio player is not nil, then play the sound effect.
+                [self loadBeepSoundFor:FALSE];
+                if (_audioPlayer && ([[AppDelegate settings] soundMode])) {
+                    [_audioPlayer play];
+                }
             }
         } else {
             self.viewPreview.hidden = TRUE;
